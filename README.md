@@ -18,7 +18,7 @@ Este repositorio contiene:
 
 # External Object en C#
 
-- **Carpeta:** `/ExternalObject/`
+- **Carpeta:** `/HumanizerLibrary/`
 - Descripción: Contiene el proyecto de biblioteca de clases `.NET Framework` que usa **Humanizer**.
 - Clase principal: `TextHelper.cs` con la función `NumeroATexto`.
 
