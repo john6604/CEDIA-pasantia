@@ -1,35 +1,32 @@
-# Visual Studio
+# Build output
+bin/
+obj/
+
+# User settings
 .vs/
 *.user
 *.suo
 
-# Build results
-bin/
-obj/
+# System folders
+AppData/
+Application Data/
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+Videos/
+Favorites/
+Saved Games/
+Contacts/
+Links/
+NTUSER.*
 
-# NuGet Packages
-packages/
-*.nupkg
-*.snupkg
-
-# Build logs
-*.log
-
-# User-specific files
-*.userprefs
-
-# Visual Studio Code
+# IDEs
 .vscode/
-
-# Mac files
-.DS_Store
-
-# Windows Thumbs.db
-Thumbs.db
-
-# Rider IDE (si usas JetBrains)
 .idea/
 
-# Exported Genexus packages (solo si quieres mantener limpio)
-# Puedes versionarlos en releases aparte si no quieres tenerlos directo
-# *.xpz
+# Others
+*.log
+*.tmp
+*.bak
