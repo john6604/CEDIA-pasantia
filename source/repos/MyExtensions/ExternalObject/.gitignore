@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# NuGet Packages
+packages/
+*.nupkg
+*.snupkg
+
+# Build logs
+*.log
+
+# User-specific files
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+
+# Mac files
+.DS_Store
+
+# Windows Thumbs.db
+Thumbs.db
+
+# Rider IDE (si usas JetBrains)
+.idea/
+
+# Exported Genexus packages (solo si quieres mantener limpio)
+# Puedes versionarlos en releases aparte si no quieres tenerlos directo
+# *.xpz
