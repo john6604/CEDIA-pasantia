@@ -6,19 +6,6 @@ Este repositorio contiene:
 
 ---
 
-# Estructura del repositorio
-├── GenexusApp/
-│ └── MiAplicacionGenexus.xpz
-├── ExternalObject/
-│ ├── MyExtensions.csproj
-│ ├── TextHelper.cs
-│ └── .gitignore
-├── README.md
-├── PROMPTS.md
-└── DocumentoTecnicoSemana1.docx
-
----
-
 # Aplicación Genexus
 
 - **Archivo:** `MiAplicacionGenexus.xpz`
