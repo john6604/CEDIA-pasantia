@@ -8,11 +8,11 @@ Este repositorio contiene:
 
 # Aplicación Genexus
 
-- **Archivo:** `MiAplicacionGenexus.xpz`
+- **Archivo:** `Farmacia.gxw`
 - Descripción: KB exportada desde el curso oficial de Genexus.
 - Para usar:
   1. Abre Genexus.
-  2. Importa el `.xpz` desde `Tools > Knowledge Manager > Import`.
+  2. Importa el `.gxw` desde `File > Open > Knowledge Base`.
 
 ---
 
