@@ -1,0 +1,23 @@
+# Carpetas de compilación
+bin/
+obj/
+
+# Archivos de usuario y configuración local de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Carpetas de paquetes NuGet (no subas /packages/ si llegara a aparecer)
+packages/
+
+# Configuraciones de VS Code o Rider (por si los usas)
+.vscode/
+.idea/
+
+# Archivos temporales o de log
+*.log
+*.tmp
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

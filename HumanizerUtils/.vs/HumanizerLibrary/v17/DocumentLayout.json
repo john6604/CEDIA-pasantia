@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jchim\\source\\repos\\HumanizerLibrary\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8C6B24DE-CC02-4F28-8575-9A9314943870}|HumanizerLibrary\\HumanizerLibrary.csproj|c:\\users\\jchim\\source\\repos\\humanizerlibrary\\humanizerlibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C6B24DE-CC02-4F28-8575-9A9314943870}|HumanizerLibrary\\HumanizerLibrary.csproj|solutionrelative:humanizerlibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\jchim\\source\\repos\\HumanizerLibrary\\HumanizerLibrary\\Class1.cs",
+              "RelativeDocumentMoniker": "HumanizerLibrary\\Class1.cs",
+              "ToolTip": "C:\\Users\\jchim\\source\\repos\\HumanizerLibrary\\HumanizerLibrary\\Class1.cs",
+              "RelativeToolTip": "HumanizerLibrary\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T04:25:08.887Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
