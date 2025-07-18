@@ -6,7 +6,7 @@ A basic Genexus application extended with a C# External Object that uses the Hum
 
 ## 📋 Requirements
 
-* Genexus Trial or Licensed IDE (tested with Genexus 17)
+* Genexus Trial or Licensed IDE (tested with Genexus 18)
 * Visual Studio 2022 with **.NET Framework 4.8** development workload
 * NuGet installed
 * Git
