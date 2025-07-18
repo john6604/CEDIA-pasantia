@@ -13,26 +13,31 @@ A basic Genexus application extended with a C# External Object that uses the Hum
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 /week1/
  ├── GenexusApp/
- │   └── Farmacia.xpz                     # Exported Genexus KB
- ├── HumanizerUtils/
- │   ├── HumanizerLibrary.csproj          # C# Class Library (.NET Framework 4.8)
- │   ├── TextHelper.cs                    # Exposes NumberToText(int) method
- │   └── .gitignore
+ │   └── Farmacia.xpz      
+ ├── HumanizerUtils/   
+ │   ├── packages/ 
+ │   ├── .vs/HumanizerLibrary/ 
+ │   └── HumanizerLibrary/    
+ │   	├── Properties/ 
+ │   	├── HumanizerLibrary.csproj          
+ │   	├── Class1.cs  
+ │   	├── packages.config                    
+ │   	└── .gitignore      
  ├── README.md
- ├── PROMPTS.md                           # AI prompts used during development
- └── TechnicalDocument_Week1.docx         # Technical documentation (in progress)
+ ├── PROMPTS.md                           
+ └── TechnicalIntegration_ExternalObject_Week1.docx         
 ```
 
 ---
 
-## 🧩 External Object in C#
+##  External Object in C#
 
-**Directory:** `/HumanizerUtils/`  
+**Directory:** `/HumanizerUtils/HumanizerLibrary/`  
 **Main class:** `TextHelper`  
 **Method exposed:**  
 ```csharp
@@ -45,10 +50,11 @@ Installed via:
 dotnet add package Humanizer
 ```
 
-### 🔧 Build Instructions
+###  Build Instructions
 
 ```bash
 cd HumanizerUtils
+cd HumanizerLibrary
 dotnet restore
 dotnet build
 ```
@@ -57,7 +63,7 @@ The DLL will be located in `/bin/Debug/`.
 
 ---
 
-## 🧠 Genexus Integration
+##  Genexus Integration
 
 1. Import `Farmacia.xpz` into Genexus:  
    Go to `Knowledge Manager > Import` and select the file.
@@ -70,37 +76,20 @@ The DLL will be located in `/bin/Debug/`.
 
 4. Use it inside a **Procedure** with the `CSHARP` command.
 
-#### 🧪 Sample Genexus Code
+####  Sample Genexus Code
 
 ```genexus
-&result = TextHelper.NumberToText(123)
-msg(&result) // Outputs: "one hundred and twenty-three"
+&Salida=&HumanizerUtilityTextHelper.NumeroATexto(&NumeroPrueba)
+CSHARP System.Console.WriteLine([!&Salida!]);
 ```
 
 ---
 
-## ✅ Deliverables for Week 1
+## Intern
 
-- [x] Genexus application created and exported
-- [x] External Object in C# using Humanizer
-- [x] Functional integration via `CSHARP`
-- [x] Source code versioned on GitHub
-- [ ] `PROMPTS.md` documented
-- [ ] Technical report for Week 1
+- John David Chimbo Pintado
 
----
-
-## 👨‍💻 Intern
-
-- [Your Full Name]
-
-## 👨‍🏫 Tutors
+## Tutors
 
 - Jonnathan Sanango
 - Xavier Espinoza
-
----
-
-## License
-
-MIT
