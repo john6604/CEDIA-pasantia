@@ -1,49 +1,44 @@
-# PROMPTS.md — Week 1
+# PROMPTS.md – Week 2: Deployment Automation
 
-This file documents the AI-assisted prompts used during the development of the Genexus + C# External Object integration, as part of the CEDIA Technical Internship Program.
+This document contains the AI prompts and guidance used during the creation and testing of the deployment automation script for the FarmaciaKB application.
 
----
+## Prompts Used
 
-###  External Object Setup (C# + Humanizer)
+### General Understanding
 
-**Prompt:**  
-> “Help me create a C# Class Library that converts an integer to words using the Humanizer library.”
+- "What is a PowerShell script for automating IIS deployment?"
+- "How do I create a script that backs up a website, copies files to IIS, and restarts an App Pool?"
 
-**Response summary:**  
-ChatGPT provided a full C# class example using Humanizer, along with instructions to install the NuGet package and compile the DLL for .NET Framework 4.8.
+### Troubleshooting
 
----
+- "Why am I getting a 'TerminatorExpectedAtEndOfString' error in PowerShell?"
+- "How to fix PowerShell parse errors caused by invalid characters or emoji?"
 
-###  Visual Studio & Git Configuration
+### Customization
 
-**Prompt:**  
-> “Make a file to ignore bin, obj, and packages folders for a Visual Studio class library”
+- "Update this PowerShell script with the following real paths:"
+  - Build path: `C:\Users\jchim\Documents\CEDIA\FarmaciaKB\NETFrameworkPostgreSQL003\web`
+  - Deploy path: `C:\inetpub\wwwroot\FarmaciaKB`
+  - Backup path: `C:\Backups\FarmaciaKB`
+  - Log file: `C:\logs\deploy-sia.log`
 
-**Response summary:**  
-ChatGPT generated a `.gitignore` file tailored for .NET Framework projects in Visual Studio, helping keep the repository clean and properly versioned.
+### Validation
 
----
+- "How can I find the Application Pool name used by my IIS website?"
+- "How do I verify that my script copied files and restarted the App Pool correctly?"
 
-###  README & Documentation Assistance
+### Execution
 
-**Prompt:**  
-> “Generate a professional English README.md for a project that uses a Genexus KB and a C# DLL with Humanizer.”
+- "What do I need to run a PowerShell script as administrator?"
+- "How do I allow script execution if PowerShell blocks it?"
 
-**Response summary:**  
-ChatGPT generated a structured README.md including requirements, build instructions, integration guide, and deliverables checklist.
+## Outcome
 
----
+This series of prompts resulted in the creation of a functional PowerShell deployment script that:
 
-###  Troubleshooting .NET Framework Target
+- Automatically backs up the IIS folder
+- Copies updated build files
+- Restarts the App Pool
+- Logs the operation with a timestamp
 
-**Prompt:**  
-> “Why can’t I select .NET Framework 4.8 when creating a Class Library in Visual Studio?”
-
-**Response summary:**  
-ChatGPT explained the difference between SDK-style projects and legacy templates, and guided how to install the proper workload and use the correct template in Visual Studio.
-
----
-
-**Tool used:** ChatGPT (OpenAI)  
-**Time period:** Week 1 (July 15–19)  
-**Intern:** John Chimbo
+This script is now used in the FarmaciaKB project as part of the Week 2 deliverables in the Genexus technical internship at CEDIA.
