@@ -1,95 +1,87 @@
-# GeneXus + Humanizer Integration (.NET Framework)
+# FarmaciaKB Auto-Deployment Script (.NET Framework - IIS)
 
-A basic Genexus application extended with a C# External Object that uses the Humanizer library to convert numbers into words. Developed during Week 1 of the CEDIA Technical Internship Program.
+A PowerShell script to automate the deployment of a GeneXus application targeting the .NET Framework on IIS.  
+The script copies the build output to the web root, creates backups, restarts the App Pool, and logs the deployment.
 
----
+## Requirements
 
-## 📋 Requirements
+* PowerShell 5+
+* IIS with `DefaultAppPool` or custom App Pool for your site
+* Folder structure:
+  * GeneXus build output:
+    `C:\Users\jchim\Documents\CEDIA\FarmaciaKB\NETFrameworkPostgreSQL003\web`
+  * IIS site directory:
+    `C:\inetpub\wwwroot\FarmaciaKB`
+  * Backup directory:
+    `C:\Backups\FarmaciaKB`
+  * Log file:
+    `C:\logs\deploy-sia.log`
 
-* Genexus Trial or Licensed IDE (tested with Genexus 18)
-* Visual Studio 2022 with **.NET Framework 4.8** development workload
-* NuGet installed
-* Git
+## Installation
 
----
+Clone this repository or download the script into your working directory:
 
-##  Repository Structure
-
-```
-/week1/
- ├── GenexusApp/
- │   └── Farmacia.xpz      
- ├── HumanizerUtils/   
- │   ├── packages/ 
- │   ├── .vs/HumanizerLibrary/ 
- │   └── HumanizerLibrary/    
- │   	├── Properties/ 
- │   	├── HumanizerLibrary.csproj          
- │   	├── Class1.cs  
- │   	├── packages.config                    
- │   	└── .gitignore      
- ├── README.md
- ├── PROMPTS.md                           
- └── TechnicalIntegration_ExternalObject_Week1.docx         
+```powershell
+git clone https://github.com/YOUR_USERNAME/farmaciakb-deploy-script.git
+cd farmaciakb-deploy-script
 ```
 
----
+## Usage
 
-##  External Object in C#
+Open PowerShell **as Administrator** and run:
 
-**Directory:** `/HumanizerUtils/HumanizerLibrary/`  
-**Main class:** `TextHelper`  
-**Method exposed:**  
-```csharp
-public string NumberToText(int numero)
+```powershell
+.\deploy-sia.ps1
 ```
 
-**NuGet dependency:** [Humanizer](https://github.com/Humanizr/Humanizer)  
-Installed via:
-```bash
-dotnet add package Humanizer
+## What It Does
+
+1. Creates a timestamped backup of the current IIS web directory.
+2. Copies the latest GeneXus build output to the IIS root.
+3. Restarts the configured Application Pool (`DefaultAppPool` by default).
+4. Appends a log entry in `C:\logs\deploy-sia.log` with the deployment status and timestamp.
+
+## Configuration
+
+If your App Pool is not `DefaultAppPool`, you can update the script:
+
+```powershell
+$AppPoolName = "YourCustomAppPoolName"
 ```
 
-###  Build Instructions
+You may also modify the paths if your environment differs:
 
-```bash
-cd HumanizerUtils
-cd HumanizerLibrary
-dotnet restore
-dotnet build
+```powershell
+$buildPath = "your_genexus_output_path"
+$deployPath = "your_iis_web_root"
+$backupPath = "your_backup_folder"
+$logFile = "your_log_file_path"
 ```
 
-The DLL will be located in `/bin/Debug/`.
+## Logging
 
----
+Each deployment generates a line in:
 
-##  Genexus Integration
-
-1. Import `Farmacia.xpz` into Genexus:  
-   Go to `Knowledge Manager > Import` and select the file.
-
-2. Copy the compiled `HumanizerLibrary.dll` to the KB's references folder.
-
-3. Create an **External Object** in Genexus:
-   - Object name: `TextHelper`
-   - Method: `NumberToText` with one input parameter (`int`) and a `string` return type.
-
-4. Use it inside a **Procedure** with the `CSHARP` command.
-
-####  Sample Genexus Code
-
-```genexus
-&Salida=&HumanizerUtilityTextHelper.NumeroATexto(&NumeroPrueba)
-CSHARP System.Console.WriteLine([!&Salida!]);
+```
+C:\logs\deploy-sia.log
 ```
 
----
+Example:
 
-## Intern
+```
+2025-07-25-142311 - Deployment completed successfully. Files copied and AppPool 'DefaultAppPool' restarted.
+```
 
-- John David Chimbo Pintado
+## Troubleshooting
 
-## Tutors
+* Make sure execution policy allows running scripts:
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
-- Jonnathan Sanango
-- Xavier Espinoza
+* Ensure all paths exist or create them manually.
+* Run PowerShell as Administrator to avoid permission issues.
+
+## License
+
+MIT
