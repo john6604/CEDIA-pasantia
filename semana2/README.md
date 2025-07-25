@@ -22,8 +22,9 @@ The script copies the build output to the web root, creates backups, restarts th
 Clone this repository or download the script into your working directory:
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/farmaciakb-deploy-script.git
-cd farmaciakb-deploy-script
+git clone https://github.com/john6604/CEDIA-pasantia.git
+cd CEDIA-pasantia
+cd semana2
 ```
 
 ## Usage
@@ -82,6 +83,3 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 * Ensure all paths exist or create them manually.
 * Run PowerShell as Administrator to avoid permission issues.
 
-## License
-
-MIT
