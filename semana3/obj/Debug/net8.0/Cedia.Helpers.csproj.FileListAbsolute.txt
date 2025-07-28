@@ -1,0 +1,14 @@
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\bin\Debug\net8.0\Cedia.Helpers.deps.json
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\bin\Debug\net8.0\Cedia.Helpers.dll
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\bin\Debug\net8.0\Cedia.Helpers.pdb
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\bin\Debug\net8.0\Cedia.Common.Models.dll
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\bin\Debug\net8.0\Cedia.Common.Models.pdb
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.csproj.AssemblyReference.cache
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.sourcelink.json
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.He.65D4D125.Up2Date
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.dll
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\refint\Cedia.Helpers.dll
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\Cedia.Helpers.pdb
+C:\Users\jchim\source\repos\Cedia.Helpers\Cedia.Helpers\obj\Debug\net8.0\ref\Cedia.Helpers.dll
