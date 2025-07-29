@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Cedia.Common.Models;
+using iTextSharp.text.pdf;
+
 
 #if NET48
-using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.security;
+#elif NET8_0_OR_GREATER
+using BitMiracle.Docotic.Pdf;
 #endif
 
 namespace Cedia.Common.Helpers
@@ -51,8 +54,37 @@ namespace Cedia.Common.Helpers
 
             return certificates;
 #else
-            Console.WriteLine("[WARN] PDF signature reading is only supported on .NET Framework 4.8 (iTextSharp dependency).");
-            return new List<PdfCertificate>();
+            var certificates = new List<PdfCertificate>();
+            try
+            {
+                using var reader = new PdfReader(pdfPath);
+                var fields = reader.AcroFields;
+                foreach (var name in fields.GetSignatureNames())
+                {
+                    var pkcs7 = fields.VerifySignature(name);
+                    certificates.Add(new PdfCertificate
+                    {
+                        Reason = pkcs7.Reason,
+                        Location = pkcs7.Location,
+                        Name = ExtractCommonName(pkcs7.SignName)
+                               ?? ExtractCommonName(pkcs7.SigningCertificate.SubjectDN.ToString()),
+                        SignedDate = pkcs7.SignDate.ToUniversalTime(),
+                        ValidFrom = pkcs7.SigningCertificate.NotBefore,
+                        ValidTo = pkcs7.SigningCertificate.NotAfter,
+                        Subject = pkcs7.SigningCertificate.SubjectDN.ToString(),
+                        Issuer = pkcs7.SigningCertificate.IssuerDN.ToString(),
+                        SignatureOrigin = (pkcs7.SigningCertificate.IssuerDN.ToString()
+                            .IndexOf("DC=cedia", StringComparison.OrdinalIgnoreCase) >= 0)
+                            ? "CEDIA Internal"
+                            : "External"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR - iTextSharp] {ex.Message}");
+            }
+            return certificates;
 #endif
         }
 

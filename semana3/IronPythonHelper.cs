@@ -1,56 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
 
-#if NET48
+#if NET48 || IRONPYTHON
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+#elif NET8_0_OR_GREATER && USE_PYTHONNET
+using Python.Runtime;
 #endif
 
 namespace Cedia.Common.Helpers
 {
-    public static class IronPythonHelper
+    public static class PythonHelper
     {
         public static string ExecuteScript(string scriptPath, string searchPath, string expression)
         {
 #if NET48
-            try
+            var engine = Python.CreateEngine();
+            var paths = engine.GetSearchPaths();
+            paths.Add(searchPath);
+            engine.SetSearchPaths(paths);
+            var scope = engine.CreateScope();
+            engine.ExecuteFile(scriptPath, scope);
+            var result = engine.Execute(expression, scope) as string;
+            return result ?? string.Empty;
+
+#elif NET8_0_OR_GREATER
+#if USE_PYTHONNET
+            PythonEngine.Initialize();
+            using (Py.GIL())
             {
-                Console.WriteLine($"[INFO] Script path: {scriptPath}");
-                Console.WriteLine($"[INFO] Python expression: {expression}");
-
-                var engine = Python.CreateEngine();
-
-                // Add search path for module imports
-                var paths = engine.GetSearchPaths();
-                paths.Add(searchPath);
-                engine.SetSearchPaths(paths);
-
-                var source = engine.CreateScriptSourceFromFile(scriptPath);
-                var compiled = source.Compile();
-                var scope = engine.CreateScope();
-
-                compiled.Execute(scope);
-
-                var result = engine.Execute(expression, scope) as string;
-                return result ?? string.Empty;
-            }
-            catch (Exception ex)
-            {
-                LogException(ex);
-                return $"ERROR: {ex.Message}";
+                dynamic scope = Py.Import(scriptPath);
+                dynamic func = scope.__dict__.GetItem(expression);
+                dynamic res = func();
+                return res?.ToString() ?? string.Empty;
             }
 #else
-            Console.WriteLine("[WARN] IronPython is not supported in .NET 8.0. This method is only functional on .NET Framework.");
-            return "ERROR: Unsupported in .NET 8";
+            Console.WriteLine("[WARN] Python execution not supported on .NET 8 (no Python runtime enabled).");
+            return "ERROR: Unsupported on .NET 8";
 #endif
-        }
-
-        private static void LogException(Exception ex)
-        {
-            Console.WriteLine($"[ERROR] Message: {ex.Message}");
-            Console.WriteLine($"[ERROR] Type: {ex.GetType().Name}");
-            Console.WriteLine($"[ERROR] Method: {ex.TargetSite?.Name}");
-            Console.WriteLine($"[ERROR] StackTrace:\n{ex.StackTrace}");
+#else
+            return "ERROR: Unsupported platform";
+#endif
         }
     }
 }
