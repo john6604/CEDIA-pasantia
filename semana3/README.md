@@ -117,6 +117,3 @@ Build outputs:
 - `bin/Debug/net48/Cedia.Helpers.dll`
 - `bin/Debug/net8.0/Cedia.Helpers.dll`
 
-## License
-
-MIT License (or specify custom license if needed).
