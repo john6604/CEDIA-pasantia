@@ -44,6 +44,7 @@ The library supports **multi-targeting** using the following setup in the `.cspr
 git clone https://github.com/john6604/CEDIA-pasantia.git
 cd CEDIA-pasantia
 cd semana3
+cd <DLL Selected>
 dotnet restore
 ```
 
