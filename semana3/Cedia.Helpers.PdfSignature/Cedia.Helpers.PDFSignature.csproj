@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="Cedia.Common.Models">
-      <HintPath>..\..\Cedia.Common.Models\Cedia.Common.Models\bin\Debug\net8.0\Cedia.Common.Models.dll</HintPath>
+      <HintPath>lib\Cedia.Common.Models.dll</HintPath>
     </Reference>
   </ItemGroup>
 
