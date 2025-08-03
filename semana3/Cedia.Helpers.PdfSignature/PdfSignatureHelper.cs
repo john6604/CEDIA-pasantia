@@ -4,8 +4,6 @@ using System.Text.RegularExpressions;
 using Cedia.Common.Models;
 using iTextSharp.text.pdf;
 
-
-
 #if NET48
 using iTextSharp.text.pdf.security;
 #elif NET8_0_OR_GREATER
