@@ -12,7 +12,7 @@ using BitMiracle.Docotic.Pdf;
 
 namespace Cedia.Common.Helpers
 {
-    public static class PdfSignatureHelper
+    public class PdfSignatureHelper
     {
         public static List<PdfCertificate> ReadSignaturesFromPdf(string pdfPath)
         {
