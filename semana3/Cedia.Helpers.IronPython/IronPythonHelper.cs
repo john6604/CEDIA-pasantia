@@ -9,7 +9,7 @@ using Python.Runtime;
 
 namespace Cedia.Common.Helpers
 {
-    public static class PythonHelper
+    public class PythonHelper
     {
         public static string ExecuteScript(string scriptPath, string searchPath, string expression)
         {
