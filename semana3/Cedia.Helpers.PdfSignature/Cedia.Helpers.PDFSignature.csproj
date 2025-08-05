@@ -10,11 +10,12 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.7.18373" />
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Cedia.Common.Models">
-      <HintPath>lib\Cedia.Common.Models.dll</HintPath>
+      <HintPath>..\..\Cedia.Common.Models\Cedia.Common.Models\bin\Debug\net8.0\Cedia.Common.Models.dll</HintPath>
     </Reference>
   </ItemGroup>
 
