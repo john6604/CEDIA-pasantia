@@ -92,5 +92,19 @@ namespace Cedia.Common.Helpers
             var match = Regex.Match(input, @"CN=([^,]+)");
             return match.Success ? match.Groups[1].Value : null;
         }
+
+        public static string ReadSignaturesAsJson(string pdfPath)
+        {
+            try
+            {
+                var certificates = ReadSignaturesFromPdf(pdfPath);
+                return Newtonsoft.Json.JsonConvert.SerializeObject(certificates);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Serializing PDF certificates: {ex.Message}");
+                return "[]";
+            }
+        }
     }
 }
