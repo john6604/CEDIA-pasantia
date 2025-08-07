@@ -61,6 +61,61 @@ namespace Cedia.Common.Helpers
             }
         }
 
+        public static string SendEmailWithMicrosoftToken(
+            string senderEmail,
+            string appPassword,
+            List<string> toRecipients,
+            string subject,
+            string body,
+            List<string>? ccRecipients = null,
+            List<string>? bccRecipients = null,
+            List<string>? attachmentPaths = null)
+        {
+            const string smtpHost = "smtp.office365.com";
+            const int smtpPort = 587;
+
+            try
+            {
+                using var message = new MailMessage
+                {
+                    From = new MailAddress(senderEmail),
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true,
+                    SubjectEncoding = Encoding.UTF8
+                };
+
+                AddRecipients(message.To, toRecipients);
+                AddRecipients(message.CC, ccRecipients);
+                AddRecipients(message.Bcc, bccRecipients);
+                AddAttachments(message, attachmentPaths);
+
+#if NET48
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+#elif NET8_0_OR_GREATER
+                
+#endif
+
+                using var smtpClient = new SmtpClient
+                {
+                    Port = smtpPort,
+                    Host = smtpHost,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderEmail, appPassword)
+                };
+
+                smtpClient.Send(message);
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return $"ERROR: {ex.Message}";
+            }
+        }
+
+
         private static void AddRecipients(MailAddressCollection collection, List<string>? recipients)
         {
             if (recipients == null) return;
