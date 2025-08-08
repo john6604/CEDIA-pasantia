@@ -1,0 +1,19 @@
+# Dotnet
+bin/
+obj/
+**/publish/
+*.user
+*.suo
+*.svclog
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python/venv (utilidades para Airflow)
+.venv/
+__pycache__/
+*.pyc
+
+# Docker
+*.log

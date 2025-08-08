@@ -1,0 +1,43 @@
+name: build-and-pack
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-dotnet-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restore & Build
+        run: |
+          dotnet restore ./dotnet-jobs/SampleJob/SampleJob.csproj
+          dotnet publish ./dotnet-jobs/SampleJob/SampleJob.csproj             -c Release -r linux-x64 --self-contained false             -p:PublishSingleFile=false -o ./dotnet-jobs/SampleJob/publish
+      - name: Upload artifact (jobs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-jobs
+          path: |
+            dotnet-jobs/**/publish/**
+
+  build-dotnet-runner-image:
+    runs-on: ubuntu-latest
+    needs: build-dotnet-jobs
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker image
+        run: |
+          docker build -t org/dotnet-runner:8.0 ./airflow/docker/dotnet-runner
+      - name: Save image as tar (si no hay registry)
+        run: |
+          docker save org/dotnet-runner:8.0 | gzip > dotnet-runner-8.0.tar.gz
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-runner-image
+          path: dotnet-runner-8.0.tar.gz
