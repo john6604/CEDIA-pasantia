@@ -90,23 +90,6 @@ foreach (var cert in certs)
 
 **Note:** Uses `iTextSharp` in .NET Framework and is planned to use `Docotic.Pdf` in .NET 8+ for future compatibility.
 
-### UrlEncryptionHelper
-
-Generates secure links with AES encryption and base64 URL-safe encoding. Includes checksum to verify integrity.
-
-```csharp
-string siteKey = UrlEncryptionHelper.GetSiteKey();
-string secureUrl = UrlEncryptionHelper.GenerateSecureLink(
-    baseUrl: "https://example.com",
-    route: "validate",
-    code: "abc123",
-    siteKey: siteKey
-);
-
-// Example output:
-// https://example.com/validate?ENCRYPTEDTOKEN
-```
-
 ## Building
 
 ```bash
